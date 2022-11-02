@@ -29,19 +29,7 @@ class Car {
     }
 
     public static Car unserialize(String json) throws IOException {
-        Map data = new ObjectMapper().readValue(json, HashMap.class);
-        Map owner = (LinkedHashMap) data.get("owner");
-        return new Car(
-                (Integer) data.get("id"),
-                (String) data.get("brand"),
-                (String) data.get("model"),
-                (String) data.get("color"),
-                new User(
-                        (Integer) owner.get("id"),
-                        (String) owner.get("firstName"),
-                        (String) owner.get("lastName"),
-                        (Integer) owner.get("age")
-                ));
+        return new ObjectMapper().readValue(json, Car.class);
     }
     // END
 }
